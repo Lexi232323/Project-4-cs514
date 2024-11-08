@@ -3,7 +3,12 @@ import java.util.Objects;
 public class GameRecord implements Comparable<GameRecord>{
     private int score;
     private String playerId;
-    // to comparable
+
+    /**
+     * to comparable
+     * @param other the object to be compared.
+     * @return 1 if larger,-1 if smaller.
+     */
     @Override
     public int compareTo(GameRecord other){
         if(this.score> other.score){
@@ -13,14 +18,28 @@ public class GameRecord implements Comparable<GameRecord>{
         }else{return 0;
         }
     }
-    //set and get for private data
+
+    /**
+     * set and get for private data
+     * @param score
+     */
     public void setScore(int score){this.score=score;}
     public void setPlayerId(String playerId){
         this.playerId=playerId;
     }
+
+    /**
+     *
+     * @return score
+     */
     public int getScore(){
         return this.score;
     }
+
+    /**
+     *
+     * @return ID
+     */
     public String getPlayerId(){
         return this.playerId;
     }

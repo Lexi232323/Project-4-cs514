@@ -3,7 +3,10 @@ import java.util.ArrayList;
 public class WheelOfFortuneAIGame extends WheelOfFortune {
     private ArrayList<WheelOfFortunePlayer> AIPlayers;
     private int playerIndex;
-    // create data member
+
+    /**
+     * create data member
+     */
     public WheelOfFortuneAIGame() {
         this(new ArrayList<>());
         AIPlayers.add(new AI_PlayerTwo());
@@ -20,13 +23,22 @@ public class WheelOfFortuneAIGame extends WheelOfFortune {
         AIPlayers = players;
         this.playerIndex = 0;
     }
-    //make abs method to concrete
+
+    /**
+     * make abs method to concrete
+     * @param previousGuesses
+     * @return
+     */
     @Override
     public String getGuess(String previousGuesses) {
         char nextGuess = AIPlayers.get(playerIndex).nextGuess(previousGuesses);
         return String.valueOf(nextGuess);
     }
-    //AIs do not enter ID
+
+    /**
+     * AIs do not enter ID
+     * @return record
+     */
     @Override
     public GameRecord play() {
 
@@ -35,7 +47,11 @@ public class WheelOfFortuneAIGame extends WheelOfFortune {
         record.setScore(playingProgress());
         return record;
     }
-    // different method for AI to keep guess
+
+    /**
+     * different method for AI to keep guess
+     * @return
+     */
     @Override
     public boolean playNext() {
         if (phraseList.size() == usedPhraseIndex.size()) {
@@ -52,6 +68,10 @@ public class WheelOfFortuneAIGame extends WheelOfFortune {
         return true;
     }
 
+    /**
+     * Main for AI
+     * @param args
+     */
     public static void main(String[] args) {
         // Initialize the players
         ArrayList<WheelOfFortunePlayer> players = new ArrayList<>();

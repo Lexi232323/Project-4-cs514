@@ -12,7 +12,12 @@ public class AI_PlayerTwo implements WheelOfFortunePlayer {
         lettersList = "eariotnslcudpmhgbfywkvxzjq";
         previousGuessesSet = new HashSet<>();
     }
-    // different method to guess for AI_II
+
+    /**
+     * different method to guess for AI_II
+     * @param previousGuesses
+     * @return
+     */
     @Override
     public char nextGuess(String previousGuesses) {
         char guess;
@@ -29,11 +34,18 @@ public class AI_PlayerTwo implements WheelOfFortunePlayer {
         }
         return '\0';
     }
-    // set AI-II ID
+
+    /**
+     * set AI-II ID
+     * @return
+     */
     @Override
     public String playerId() {
         return "AI_PlayerTwo";
     }
+    /**
+     * Clear guessed letters to reset for a new game
+     */
 
     @Override
     public void reset() {

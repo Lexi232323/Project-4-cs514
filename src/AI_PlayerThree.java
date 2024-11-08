@@ -11,35 +11,44 @@ public class AI_PlayerThree implements WheelOfFortunePlayer {
         this.guessedLetters = new HashSet<>();
         this.random = new Random();
     }
-    // AI_III has different method to guess
+
+    /**
+     * AI_III has different method to guess
+     * @param previousGuesses
+     * @return
+     */
     @Override
     public char nextGuess(String previousGuesses) {
         char guess;
 
-        // Add previous guesses to avoid duplication
+
         for (char c : previousGuesses.toCharArray()) {
             guessedLetters.add(c);
         }
-
-        // Keep generating random letters until we find one that hasn't been guessed
         do {
-            guess = (char) ('a' + random.nextInt(26));  // Generates a random letter from 'a' to 'z'
+            guess = (char) ('a' + random.nextInt(26));
         } while (guessedLetters.contains(guess));
-
-        // Add the current guess to guessedLetters to avoid repeating it in future guesses
         guessedLetters.add(guess);
         System.out.println("Random guess: " + guess);
         return guess;
     }
-    // set AI_III ID
+
+    /**
+     * set AI_III ID
+     * @return
+     */
     @Override
     public String playerId() {
         return "AI_PlayerThree";
     }
 
+    /**
+     * Clear guessed letters to reset for a new game
+     */
+
     @Override
     public void reset() {
-        guessedLetters.clear();  // Clear guessed letters to reset for a new game
+        guessedLetters.clear();
     }
 
     @Override

@@ -2,16 +2,32 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
-//MasterMinds game with parent guessing game
+/**
+*
+ *
+ *
+ *MasterMinds game with parent guessing game
+ */
 public class MasterMinds extends GuessingGame {
     static String colors = "RGBYOP";
     private Scanner scanner = new Scanner(System.in);
+
+    /**
+     *
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         MasterMinds mastermind = new MasterMinds();
         AllGamesRecord allGamesRecord = mastermind.playAll();
         System.out.println(allGamesRecord);
     }
-    // make abs class concrete
+
+    /**
+     *
+     *
+     * @return score
+     */
    @Override
     protected int playingProgress() {
         int guessCount = 0;
@@ -44,7 +60,13 @@ public class MasterMinds extends GuessingGame {
         }
         return 0;
     }
-    // make abs class concrete
+
+    /**
+     * make abs class concrete
+     *
+     * @param phrase
+     * @return String
+     */
     @Override
     public String generateHiddenPhrase(String phrase) {
         StringBuilder sb = new StringBuilder();
@@ -54,7 +76,12 @@ public class MasterMinds extends GuessingGame {
         }
         return sb.toString();
     }
-    // make abs class concrete
+
+    /**
+     * make abs class concrete
+     * @param colors
+     * @return guess
+     */
     @Override
     public String getGuess(String colors) {
         System.out.println("Enter your guess (4 letters from " + colors + "): ");
@@ -70,7 +97,13 @@ public class MasterMinds extends GuessingGame {
         }
         return guess.toString();
     }
-    // new method in this game own
+
+    /**
+     * new method in this game own
+     * @param secretCodeForCrossingOut
+     * @param guess
+     * @return number of right color in right space
+     */
     public int computeExacts(StringBuilder secretCodeForCrossingOut, String guess) {
         int exactCount = 0;
         for (int i = 0; i < 4; i++) {
@@ -81,7 +114,13 @@ public class MasterMinds extends GuessingGame {
         }
         return exactCount;
     }
-    // new method in this game own
+
+    /**
+     * new method in this game own
+     * @param secretCodeForCrossingOut
+     * @param guess
+     * @return number of right color
+     */
     public int computePartials(StringBuilder secretCodeForCrossingOut, String guess) {
         int partialCount = 0;
         int[] secretCodeFreq = new int[256];

@@ -5,7 +5,11 @@ public abstract class GuessingGame extends Game{
     private Scanner scanner=new Scanner(System.in);
     // two games all generate but with different ways
     public abstract String generateHiddenPhrase(String phrase);
-    // two games need users id
+
+    /**
+     * two games need users id
+     * @return game record
+     */
     protected GameRecord setupGame(){
         System.out.println("Please enter your Player ID: ");
         String playerId=scanner.nextLine();
@@ -13,7 +17,11 @@ public abstract class GuessingGame extends Game{
         record.setPlayerId(playerId);
         return record;
     }
-    // two games need to ask users to play next
+
+    /**
+     * two games need to ask users to play next
+     * @return
+     */
     @Override
     public boolean playNext() {
 
@@ -25,7 +33,12 @@ public abstract class GuessingGame extends Game{
         }
         return input == 'y';
     }
-    //different ways to guess
+
+    /**
+     * different ways to guess
+     * @param phrase
+     * @return String guess
+     */
     abstract String getGuess(String phrase);
     // same way to add record
     protected GameRecord play(){
@@ -35,7 +48,11 @@ public abstract class GuessingGame extends Game{
         System.out.println("Game completed with score "+score);
         return record;
     }
-    // different methods to calculate score
+
+    /**
+     * different methods to calculate score
+     * @return score
+     */
     protected int playingProgress() {
         return 0;
     }

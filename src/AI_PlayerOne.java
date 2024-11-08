@@ -15,7 +15,12 @@ public class AI_PlayerOne implements WheelOfFortunePlayer{
         indexLettersList=0;
         lettersList="eariotnslcudpmhgbfywkvxzjq";
     }
-    // change nextGuess for AI-I to guess
+
+    /**
+     * change nextGuess for AI-I to guess
+     * @param previousGuesses
+     * @return
+     */
     @Override
     public char nextGuess(String previousGuesses){
         char guess=0;
@@ -77,10 +82,16 @@ public class AI_PlayerOne implements WheelOfFortunePlayer{
         }
         return guess;
     }
-    //give AI-I an ID
+
+    /**
+     * give AI-I an ID
+     * @return
+     */
     @Override
     public String playerId(){return "AI_Playerone";}
-    // reset
+    /**
+     * Clear guessed letters to reset for a new game
+     */
     @Override
     public void reset(){
         previousPopularWords=new HashSet<>();

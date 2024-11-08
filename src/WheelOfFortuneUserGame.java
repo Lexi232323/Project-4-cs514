@@ -17,6 +17,12 @@ public class WheelOfFortuneUserGame extends WheelOfFortune implements WheelOfFor
     public void reset(){
         previousGuesses.setLength(0);
     }
+
+    /**
+     * different method in two games
+     * @param previousGuesses
+     * @return
+     */
     @Override
     public String getGuess(String previousGuesses){
         String input;
@@ -37,18 +43,10 @@ public class WheelOfFortuneUserGame extends WheelOfFortune implements WheelOfFor
         }while(true);
         return input;
     }
-    @Override
-    protected GameRecord play(){
-        System.out.println("Please enter your Game ID: ");
-        playId =scanner.nextLine();
-        GameRecord record= new GameRecord();
-        record.setPlayerId(playId);
-        int score=playingProgress();
-        record.setScore(score);
-        System.out.println("Game completed with score "+score);
-        return record;
-    }
-
+    /**
+     * Main
+     * @param args
+     */
     public static void main(String [] args) {
         WheelOfFortuneUserGame wofUserGame = new WheelOfFortuneUserGame();
         AllGamesRecord record = wofUserGame.playAll();

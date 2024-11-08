@@ -16,7 +16,10 @@ public abstract class WheelOfFortune extends GuessingGame{
     public WheelOfFortune(){
         readPhrases();
     }
-    //get phrase from file
+
+    /**
+     * get phrase from file
+     */
     public void readPhrases(){
         try{
             this.phraseList=Files.readAllLines(Paths.get("test.txt"));
@@ -25,7 +28,10 @@ public abstract class WheelOfFortune extends GuessingGame{
 
         }
     }
-    //choose a phrase from list
+
+    /**
+     * choose a phrase from list
+     */
     public void randomPhrase() {
         Random rand = new Random();
         int index;
@@ -39,7 +45,12 @@ public abstract class WheelOfFortune extends GuessingGame{
         this.phrase=this.phraseList.get(index);
         this.remainingChances=(int)phrase.chars().filter(Character::isLetter).distinct().count()+4;
     }
-    // concrete different method
+
+    /**
+     * concrete different method
+     * @param phrase
+     * @return phrase replace with **
+     */
     @Override
     public String generateHiddenPhrase(String phrase) {
         phrase=this.phrase;
@@ -55,9 +66,14 @@ public abstract class WheelOfFortune extends GuessingGame{
         }
         return hiddenPhrase.toString();
     }
-    // concrete different method
+
+    /**
+     * concrete different method
+     * @return score
+     */
     @Override
     public int playingProgress(){
+        int rightguess=0;
         previousGuesses=new StringBuilder();
         this.randomPhrase();
         generateHiddenPhrase(this.phrase);
@@ -73,6 +89,7 @@ public abstract class WheelOfFortune extends GuessingGame{
                 System.out.println("You Miss! You have "+remainingChances+" chance.");
             }else{
                 remainingChances--;
+                rightguess++;
                 System.out.println("Bingo!"+ remainingChances+ " chances to guess");
                 System.out.println("The Updated Hidden Phrase: "+ hiddenPhrase);
             }
@@ -83,12 +100,16 @@ public abstract class WheelOfFortune extends GuessingGame{
             score=10+remainingChances;
             System.out.println("You Win! You got "+score+" points.");
         }else{
-            score=0;
-            System.out.println("You lost.");
+            score=rightguess;
+            System.out.println("You lost.You got "+score+" points.");
         }
         return score;
     }
-    // new method in this game
+
+    /**
+     * new method in this game
+     * @return
+     */
     public boolean processGuess(){
         boolean match=false;
         for (int i = 0; i < phrase.length(); i++) {
